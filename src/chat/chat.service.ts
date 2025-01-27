@@ -103,6 +103,8 @@ export class ChatService {
       JSON.stringify(
         {
           statement: firstMessageEntity.content,
+          language: bot.language,
+          timestamp: Date.now().toString(),
           source: 'chat'
         }
       )
