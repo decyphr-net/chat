@@ -12,16 +12,16 @@ import { ChatService } from './chat.service';
     TypeOrmModule.forFeature([Chat, Message]),
     ClientsModule.register([
       {
-        name: 'WORD_MICROSERVICE',
+        name: 'LEXICON',
         transport: Transport.KAFKA,
         options: {
           client: {
-            clientId: 'word',
+            clientId: 'lexicon',
             brokers: ['kafka:9092']
           },
           producerOnlyMode: true,
           consumer: {
-            groupId: 'word-processor-consumer'
+            groupId: 'lexicon-consumer'
           },
         },
       },

@@ -16,7 +16,7 @@ export class ChatService {
   constructor(
     @InjectRepository(Chat) private readonly chatRepository: Repository<Chat>,
     @InjectRepository(Message) private readonly messageRepository: Repository<Message>,
-    @Inject('WORD_MICROSERVICE') private readonly wordClient: ClientKafka,
+    @Inject('LEXICON') private readonly lexiconClient: ClientKafka,
     private readonly httpService: HttpService,
     private readonly openaiService: OpenaiService,
   ) { }
@@ -98,7 +98,7 @@ export class ChatService {
     });
     initialChat.messages = [...initialChat.messages, firstMessageEntity];
     await this.chatRepository.save(initialChat);
-    this.wordClient.emit(
+    this.lexiconClient.emit(
       'create_statement',
       JSON.stringify(
         {
