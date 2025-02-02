@@ -105,7 +105,8 @@ export class ChatService {
           statement: firstMessageEntity.content,
           language: bot.language,
           timestamp: Date.now().toString(),
-          source: 'chat'
+          source: 'chat',
+          clientId: createChatRequestDto.clientId
         }
       )
     );
